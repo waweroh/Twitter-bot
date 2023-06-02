@@ -20,8 +20,8 @@ client = tweepy.Client(
 # api = tweepy.API(auth)
 
 # Send a tweet
-client.create_tweet(text="Busy monday.")
-client.delete_tweet(1663094386144473091)
+# client.create_tweet(text="Busy monday.")
+# client.delete_tweet(1663094386144473091)
 
 
 
@@ -37,6 +37,16 @@ def like_tweets(search_query, num_likes):
 
 # usage: like tweets containing the hashtag "#haters"
 
+#like tweet
+
+def like_tweet(tweet_id):
+    try:
+        client.like(tweet_id)
+        print("Liked a tweet:", tweet_id)
+
+    except Exception as e:
+        print("Error liking tweet:", e)
+like_tweet(1664226636680552449)
 
 
 def retweet_bot(search_query, num_retweets):
@@ -62,9 +72,23 @@ def tweet_bot(message, image_path=None):
     tweet = response.data
     print("Tweeted successfully:", tweet['text'])
 
-tweet_bot("NEW POSTS COMING")   
+tweet_bot("Happy Madaraka Day")   
 
 # usage: tweet a message 
+
+#Edit a tweet
+def block_user(target_user_id ):
+    # block = client.block(blocked = target_user_id)
+    # for user in block.data:
+    try:
+        client.block(target_user_id)
+        print ("Successfully blocked:", target_user_id)
+
+    except tweepy.TweepyError as error:
+        print("Error blocking user:", error)
+block_user(1293130256505884672)
+
+
 
 def delete_tweet(tweet_id):
     try:
@@ -92,6 +116,7 @@ get_liked_tweets("wdkjkhj", 15)
 
 #retweets bot function
 class MyStream(tweepy.StreamingClient):
+    # a method
     def upon_tweet(self, tweet):
         print("Tweet:", tweet.text)
         try:
@@ -106,6 +131,9 @@ stream = MyStream(bearer_token = keys.bear_token)
 rule = tweepy.StreamRule("(#python OR #coding) (-is:retweet -is :reply)")
 stream.add_rules(rule)
 stream.filter()
+
+#Edit tweet
+
 
 
 
