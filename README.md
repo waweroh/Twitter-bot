@@ -5,16 +5,19 @@ The bot has the following functions:
 
 
 ## Twitting function
-- The tweet_bot function takes a message as input and optionally an image path. If an image path is provided, the code uploads the image and includes it in the tweet using the upload_media method. Finally, it creates a tweet using the create_tweet method and prints a success message with the tweet text
+The given code defines a function called tweet_bot that allows you to post a tweet with a message and an image. Here's a breakdown of the code:
+
+- The tweet_bot function takes two parameters: message, which is the content of the tweet, and image_path, which is the file path of an optional image to be attached to the tweet.
+
+- The code checks if image_path is provided and attaches it to the tweet.
 
 
-- The retweet_bot function takes two parameters: search_query and num_retweets. It uses the Cursor object to search for tweets based on the given search query and retrieves the specified number of tweets. It then iterates over the retrieved tweets and attempts to retweet each tweet using the retweet method of the API object.
+- The code then uses the client.create_tweet() method to create a tweet with the provided message text. If an image is attached, the media_ids parameter is set to the media key of the uploaded image.
 
+- The create_tweet() method returns a Tweet object, which is stored in the response variable.
 
-- The like_tweets function takes two parameters: search_query (the query string to search for tweets) and num_likes (the number of tweets to like). It uses the search_recent_tweets method of the Client instance to search for recent tweets matching the query. It then iterates over the retrieved tweets and attempts to like each tweet using the like method 
+- Finally, the code prints a success message indicating that the tweet was posted successfully, along with the text of the tweeted message.
 
-
-- The get_liked_tweets function takes in the username and number of likes parameters. It then iterates over the userid to retrieve the number of liked tweets requested for.
 
 ## Deleting Tweets function
 
@@ -31,6 +34,15 @@ The given code defines a function called delete_tweet that takes a tweet_id as i
 - Outside the function, the delete_tweet function is called with a specific tweet_id (1664895447348187137) to demonstrate the usage. This will attempt to delete the tweet with the given ID.
 
 By running this code, you can delete a specific tweet by providing its ID as an argument to the delete_tweet function. If the tweet is successfully deleted, a success message will be printed. Otherwise, an error message will be printed along with the specific exception message.
+
+## Other functions. Due to twitter deprecating API v1.1 this functions do not contact the Twitter API
+- The retweet_bot function takes two parameters: search_query and num_retweets. It uses the Cursor object to search for tweets based on the given search query and retrieves the specified number of tweets. It then iterates over the retrieved tweets and attempts to retweet each tweet using the retweet method of the API object.
+
+
+- The like_tweets function takes two parameters: search_query (the query string to search for tweets) and num_likes (the number of tweets to like). It uses the search_recent_tweets method of the Client instance to search for recent tweets matching the query. It then iterates over the retrieved tweets and attempts to like each tweet using the like method 
+
+
+- The get_liked_tweets function takes in the username and number of likes parameters. It then iterates over the userid to retrieve the number of liked tweets requested for.
 
 
 
